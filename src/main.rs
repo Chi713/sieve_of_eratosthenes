@@ -4,7 +4,7 @@ fn main() {
     let range =9;
     let max_check = (range as f64).sqrt().trunc() as usize;
     let mut list = vec![false; range -1];
-    //let mut final_list =Vec::new();
+    let mut final_list: Vec<usize> = Vec::new();
 
     println!("max_check: {}", max_check);
 
@@ -18,7 +18,7 @@ fn main() {
                 println!("j mod(i): {}", ((j+2) % (i+2)));
                 println!("list at index:{}", list[j]);
                 if list[j] == false {
-                  list[j] = ((((j+2) % (i+2)) == 0) & (j!= i));
+                  list[j] = ((j+2) % (i+2) == 0) & (j!= i);
                 }
                 println!("list at index:{}", list[j]);
             }
@@ -27,7 +27,8 @@ fn main() {
         //println!("{}", i);
     }
     println!("final: {:?}", list);
-   /* for count in list.iter() {
-      final_list[count] = (2+count); 
-    } */
+   for (pos, value) in list.iter().enumerate() {
+      println!("{:?}", pos);
+      final_list[pos] = (2+pos) * (*value==false) as usize; 
+    } 
 }
